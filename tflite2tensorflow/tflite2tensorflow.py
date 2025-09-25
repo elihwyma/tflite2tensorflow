@@ -6368,8 +6368,8 @@ def main():
         if output_coreml:
             try:
                 print(f'{Color.REVERCE}CoreML convertion started{Color.RESET}', '=' * 59)
-                mlmodel = ct.convert(model_output_path, source='tensorflow')
-                mlmodel.save(f'{model_output_path}/model_coreml_float32.mlmodel')
+                mlmodel = ct.convert(model_output_path, source='tensorflow', convert_to='mlprogram', minimum_deployment_target=ct.target.iOS15)
+                mlmodel.save(f'{model_output_path}/model_coreml_float32.mlpackage')
                 print(f'{Color.GREEN}CoreML convertion complete!{Color.RESET} - {model_output_path}/model_coreml_float32.mlmodel')
             except Exception as e:
                 print(f'{Color.RED}ERROR:{Color.RESET}', e)
